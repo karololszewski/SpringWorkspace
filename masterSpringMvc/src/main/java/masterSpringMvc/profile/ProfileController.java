@@ -2,6 +2,7 @@ package masterSpringMvc.profile;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -32,5 +33,18 @@ public class ProfileController {
 	@ModelAttribute("dateFormat")
 	public String localeFormat(Locale locale) {
 		return USLocalDateFormatter.getPattern(locale);
+	}
+	
+	@RequestMapping(value = "/profile", params = {"addTaste"})
+	public String addRow(ProfileForm profileForm) {
+		profileForm.getTastes().add(null);
+		return "profile/profilePage";
+	}
+	
+	@RequestMapping(value = "/profile", params = {"removeTaste"})
+	public String removeRow(ProfileForm profileForm, HttpServletRequest req) {
+		Integer rowId = Integer.valueOf(req.getParameter("removeTaste"));
+		profileForm.getTastes().remove(rowId.intValue());
+		return "profile/profilePage";
 	}
 }

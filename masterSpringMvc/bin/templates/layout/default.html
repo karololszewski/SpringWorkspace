@@ -8,10 +8,26 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </head>
 <body>
+	<ul id="lang-dropdown" class="dropdown-content">
+		<li><a href="?lang=pl">Polski</a></li>
+		<li><a href="?lang=en">Angielski</a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper indigo">
+			<ul class="right">
+				<li>
+					<a class="dropdown-button" href="#!" data-activates="lang-dropdown"><i class="material-icons">language</i>Język</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 	<section layout:fragment="content">
 		<p>Zawartość strony</p>
 	</section>
 	<script src="webjars/jquery/2.2.1/jquery.js/"></script>
 	<script src="webjars/materializecss/0.97.7/js/materialize.js/"></script>
+	<script type="text/javascript">
+		$(".dropdown-button").dropdown();
+	</script>
 </body>
 </html>
